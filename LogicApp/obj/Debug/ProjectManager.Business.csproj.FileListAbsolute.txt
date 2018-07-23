@@ -1,0 +1,12 @@
+C:\Users\Zen\documents\visual studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\ProjectManager.Business.dll
+C:\Users\Zen\documents\visual studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\ProjectManager.Business.pdb
+C:\Users\Zen\documents\visual studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\Ninject.dll
+C:\Users\Zen\documents\visual studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\Ninject.xml
+C:\Users\Zen\documents\visual studio 2012\Projects\ProjectsManager\LogicApp\obj\Debug\ProjectManager.Business.dll
+C:\Users\Zen\documents\visual studio 2012\Projects\ProjectsManager\LogicApp\obj\Debug\ProjectManager.Business.pdb
+C:\Users\Hello\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\ProjectManager.Business.dll
+C:\Users\Hello\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\ProjectManager.Business.pdb
+C:\Users\Hello\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\Ninject.dll
+C:\Users\Hello\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\Ninject.xml
+C:\Users\Hello\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\obj\Debug\ProjectManager.Business.dll
+C:\Users\Hello\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\obj\Debug\ProjectManager.Business.pdb

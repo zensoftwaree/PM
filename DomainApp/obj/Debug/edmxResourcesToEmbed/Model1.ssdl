@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище masterModel" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Хранилище masterModelContainer">
+    <EntitySet Name="Component" EntityType="Хранилище masterModel.Component" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetailIssue" EntityType="Хранилище masterModel.DetailIssue" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Issue" EntityType="Хранилище masterModel.Issue" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Project" EntityType="Хранилище masterModel.Project" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjVersion" EntityType="Хранилище masterModel.ProjVersion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StatusIssue" EntityType="Хранилище masterModel.StatusIssue" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeIssue" EntityType="Хранилище masterModel.TypeIssue" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="Хранилище masterModel.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRole" EntityType="Хранилище masterModel.UserRole" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Component_Project_Id" Association="Хранилище masterModel.FK_Component_Project_Id">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Component" EntitySet="Component" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_User_Id" Association="Хранилище masterModel.FK_Component_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="Component" EntitySet="Component" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailIssue_Issue_Id" Association="Хранилище masterModel.FK_DetailIssue_Issue_Id">
+      <End Role="Issue" EntitySet="Issue" />
+      <End Role="DetailIssue" EntitySet="DetailIssue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailIssue_User_Id" Association="Хранилище masterModel.FK_DetailIssue_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="DetailIssue" EntitySet="DetailIssue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_Component_Id" Association="Хранилище masterModel.FK_Issue_Component_Id">
+      <End Role="Component" EntitySet="Component" />
+      <End Role="Issue" EntitySet="Issue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_StatusIssue_Id" Association="Хранилище masterModel.FK_Issue_StatusIssue_Id">
+      <End Role="StatusIssue" EntitySet="StatusIssue" />
+      <End Role="Issue" EntitySet="Issue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_TypeIssue_Id" Association="Хранилище masterModel.FK_Issue_TypeIssue_Id">
+      <End Role="TypeIssue" EntitySet="TypeIssue" />
+      <End Role="Issue" EntitySet="Issue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_User_Id" Association="Хранилище masterModel.FK_Issue_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="Issue" EntitySet="Issue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_User_Id" Association="Хранилище masterModel.FK_Project_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjVersion_Project_Id" Association="Хранилище masterModel.FK_ProjVersion_Project_Id">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjVersion" EntitySet="ProjVersion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserRole_Id" Association="Хранилище masterModel.FK_User_UserRole_Id">
+      <End Role="UserRole" EntitySet="UserRole" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Component">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="ComponentLeadId" Type="int" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetailIssue">
+    <Key>
+      <PropertyRef Name="IssueId" />
+    </Key>
+    <Property Name="IssueId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DescriptionWork" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="TimeIn" Type="smalldatetime" Nullable="false" />
+    <Property Name="TimeOut" Type="smalldatetime" Nullable="false" />
+    <Property Name="NewVersion" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="TypeIssueId" Type="int" Nullable="false" />
+    <Property Name="StatusId" Type="int" Nullable="false" />
+    <Property Name="ReporterId" Type="int" Nullable="false" />
+    <Property Name="ComponentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ProjectLeadId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ProjVersion">
+    <Key>
+      <PropertyRef Name="IdVersion" />
+    </Key>
+    <Property Name="IdVersion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Version" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="Release" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatusIssue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TypeIssue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Psw" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Fullname" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="30" />
+  </EntityType>
+  <Association Name="FK_Component_Project_Id">
+    <End Role="Project" Type="Хранилище masterModel.Project" Multiplicity="1" />
+    <End Role="Component" Type="Хранилище masterModel.Component" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Component">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_User_Id">
+    <End Role="User" Type="Хранилище masterModel.User" Multiplicity="1" />
+    <End Role="Component" Type="Хранилище masterModel.Component" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Component">
+        <PropertyRef Name="ComponentLeadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailIssue_Issue_Id">
+    <End Role="Issue" Type="Хранилище masterModel.Issue" Multiplicity="1" />
+    <End Role="DetailIssue" Type="Хранилище masterModel.DetailIssue" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Issue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailIssue">
+        <PropertyRef Name="IssueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailIssue_User_Id">
+    <End Role="User" Type="Хранилище masterModel.User" Multiplicity="1" />
+    <End Role="DetailIssue" Type="Хранилище masterModel.DetailIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailIssue">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_Component_Id">
+    <End Role="Component" Type="Хранилище masterModel.Component" Multiplicity="1" />
+    <End Role="Issue" Type="Хранилище masterModel.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Component">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_StatusIssue_Id">
+    <End Role="StatusIssue" Type="Хранилище masterModel.StatusIssue" Multiplicity="1" />
+    <End Role="Issue" Type="Хранилище masterModel.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusIssue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_TypeIssue_Id">
+    <End Role="TypeIssue" Type="Хранилище masterModel.TypeIssue" Multiplicity="1" />
+    <End Role="Issue" Type="Хранилище masterModel.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeIssue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="TypeIssueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_User_Id">
+    <End Role="User" Type="Хранилище masterModel.User" Multiplicity="1" />
+    <End Role="Issue" Type="Хранилище masterModel.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="ReporterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_User_Id">
+    <End Role="User" Type="Хранилище masterModel.User" Multiplicity="1" />
+    <End Role="Project" Type="Хранилище masterModel.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ProjectLeadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjVersion_Project_Id">
+    <End Role="Project" Type="Хранилище masterModel.Project" Multiplicity="1" />
+    <End Role="ProjVersion" Type="Хранилище masterModel.ProjVersion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjVersion">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserRole_Id">
+    <End Role="UserRole" Type="Хранилище masterModel.UserRole" Multiplicity="1" />
+    <End Role="User" Type="Хранилище masterModel.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

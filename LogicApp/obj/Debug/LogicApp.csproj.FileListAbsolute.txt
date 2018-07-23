@@ -1,0 +1,11 @@
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\LogicApp.dll
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\LogicApp.pdb
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\DomainApp.dll
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\EntityFramework.dll
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\DomainApp.pdb
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\EntityFramework.xml
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\obj\Debug\LogicApp.csprojResolveAssemblyReference.cache
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\obj\Debug\LogicApp.dll
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\obj\Debug\LogicApp.pdb
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\Ninject.dll
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\LogicApp\bin\Debug\Ninject.xml

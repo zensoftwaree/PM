@@ -1,0 +1,63 @@
+﻿<Window x:Class="ProjectsManager.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AdministratorWindow" Height="394.211" Width="961.896">
+    <Grid HorizontalAlignment="Left" Width="978" Margin="0,0,-165,0">
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="203*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Name="lblCurrUser" Content="Entered as:" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="-0.032,-0.633" Height="26" Width="153" Margin="0,0,0,338"/>
+        <TabControl Grid.ColumnSpan="2" Height="354" Margin="0,10,46,0" VerticalAlignment="Top" Background="{x:Null}" BorderThickness="2,1,1,1" Grid.Column="1">
+            <TabItem Name="tiProjectData" Header="Add New Project">
+                <Grid  Margin="0,0,-21,-4" HorizontalAlignment="Left" Width="783">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="133*"/>
+                        <ColumnDefinition Width="304*" />
+                        <ColumnDefinition Width="346*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="11*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Label Content="Name of project" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
+                    <ComboBox DisplayMemberPath="FullName"  Name="cbDevelopersName" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="14,85,0,0" VerticalAlignment="Top" Width="192" Height="28" IsSynchronizedWithCurrentItem="True"/>
+                    <TextBox Name="tbProjectName" Text="{Binding Path=Name}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284"/>
+                    <Label Content="Project Lead:" Grid.Column="0" HorizontalAlignment="Left" Height="28" Margin="10,57,0,0" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
+                    <Label Content="Description of project:" Grid.Column="0" HorizontalAlignment="Left" Height="27" Margin="8,122,0,0" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
+                    <TextBox Name="tbProjectDescription" Text="{Binding Path=Description}" AcceptsReturn="true" VerticalScrollBarVisibility="Visible" MinLines="8" MaxLines="10" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Height="102" Margin="12,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Background="White"/>
+                    <Label Grid.Column="1" Content="{Binding Path=TeamLeadName}" HorizontalAlignment="Left" Margin="14,59,0,0" VerticalAlignment="Top" Width="164"/>
+                    <Button Name="btnSetNewLead" Content="SetLeadOfProj" Grid.Column="1" HorizontalAlignment="Left" Height="27" Margin="221,86,0,0" VerticalAlignment="Top" Width="73"/>
+
+                    <Button Content="Add New" Name="btnAddNewProj" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102"/>
+                    <Button Name="btnSaveChanges" Content="Save Changes" HorizontalAlignment="Left" Margin="134,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="97" Height="28" Grid.Column="1"/>
+                    
+                    <Button Name="btnAddComponents" Content="Add Components to Project" Grid.Column="2" HorizontalAlignment="Left" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="181" Height="28"/>
+                    
+                    <Label Content="Status:" HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="2" VerticalAlignment="Top" Width="47" FontWeight="Bold" Height="26"/>
+                    
+                    <Label Name ="lblStatus" HorizontalAlignment="Left" Margin="62,10,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="560" Height="26"/>
+                    <TextBox Name="tbCompoName" Grid.Column="2" HorizontalAlignment="Left" Height="27" Margin="16,105,0,0" TextWrapping="Wrap" Text="Name Component of Project" VerticalAlignment="Top" Width="297"/>
+                    <TextBox Name="tbCompoDescr" Grid.Column="2" HorizontalAlignment="Left" Height="55" Margin="16,141,0,0" TextWrapping="Wrap" Text="Description of Component" VerticalAlignment="Top" Width="297"/>
+                    <ComboBox DisplayMemberPath="FullName" x:Name="cbDevelopersName_Copy" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" Margin="16,201,0,0" VerticalAlignment="Top" Width="231" Height="28" IsSynchronizedWithCurrentItem="True"/>
+                    <DataGrid Name="grComponentsDetail" Grid.Column="2" HorizontalAlignment="Left" Margin="16,10,0,0" VerticalAlignment="Top" Height="90" Width="297"/>
+                    
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Manage Project">
+
+            </TabItem>
+        </TabControl>
+        <Expander Header="View Actual Projects"  HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Height="185" Width="143" BorderBrush="Black">
+            <ListBox Name="lbActualProjects" />
+        </Expander>
+        <Button Content="LogOut" HorizontalAlignment="Left" Height="24" Margin="10,330,0,0" VerticalAlignment="Top" Width="141"/>
+
+    </Grid>
+</Window>

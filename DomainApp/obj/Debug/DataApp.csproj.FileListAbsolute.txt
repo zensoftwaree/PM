@@ -1,0 +1,3 @@
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\DomainApp\obj\Debug\DataApp.csprojResolveAssemblyReference.cache
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\DomainApp\obj\Debug\DomainApp.dll
+C:\Users\Zen\Documents\Visual Studio 2012\Projects\ProjectsManager\DomainApp\obj\Debug\DomainApp.pdb

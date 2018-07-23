@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projectsBaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="projectsBaseEntities2" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Component" EntityType="projectsBaseModel.Component" />
+    <EntitySet Name="DetailIssue" EntityType="projectsBaseModel.DetailIssue" />
+    <EntitySet Name="Issue" EntityType="projectsBaseModel.Issue" />
+    <EntitySet Name="Project" EntityType="projectsBaseModel.Project" />
+    <EntitySet Name="ProjVersion" EntityType="projectsBaseModel.ProjVersion" />
+    <EntitySet Name="StatusIssue" EntityType="projectsBaseModel.StatusIssue" />
+    <EntitySet Name="TypeIssue" EntityType="projectsBaseModel.TypeIssue" />
+    <EntitySet Name="User" EntityType="projectsBaseModel.User" />
+    <EntitySet Name="UserRole" EntityType="projectsBaseModel.UserRole" />
+    <AssociationSet Name="FK_Component_Project_Id" Association="projectsBaseModel.FK_Component_Project_Id">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Component" EntitySet="Component" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Component_User_Id" Association="projectsBaseModel.FK_Component_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="Component" EntitySet="Component" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_Component_Id" Association="projectsBaseModel.FK_Issue_Component_Id">
+      <End Role="Component" EntitySet="Component" />
+      <End Role="Issue" EntitySet="Issue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailIssue_Issue_Id" Association="projectsBaseModel.FK_DetailIssue_Issue_Id">
+      <End Role="Issue" EntitySet="Issue" />
+      <End Role="DetailIssue" EntitySet="DetailIssue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailIssue_User_Id" Association="projectsBaseModel.FK_DetailIssue_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="DetailIssue" EntitySet="DetailIssue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_StatusIssue_Id" Association="projectsBaseModel.FK_Issue_StatusIssue_Id">
+      <End Role="StatusIssue" EntitySet="StatusIssue" />
+      <End Role="Issue" EntitySet="Issue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_TypeIssue_Id" Association="projectsBaseModel.FK_Issue_TypeIssue_Id">
+      <End Role="TypeIssue" EntitySet="TypeIssue" />
+      <End Role="Issue" EntitySet="Issue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_User_Id" Association="projectsBaseModel.FK_Issue_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="Issue" EntitySet="Issue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_User_Id" Association="projectsBaseModel.FK_Project_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjVersion_Project_Id" Association="projectsBaseModel.FK_ProjVersion_Project_Id">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjVersion" EntitySet="ProjVersion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserRole_Id" Association="projectsBaseModel.FK_User_UserRole_Id">
+      <End Role="UserRole" EntitySet="UserRole" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Component">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="ComponentLeadId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="projectsBaseModel.FK_Component_Project_Id" FromRole="Component" ToRole="Project" />
+    <NavigationProperty Name="User" Relationship="projectsBaseModel.FK_Component_User_Id" FromRole="Component" ToRole="User" />
+    <NavigationProperty Name="Issue" Relationship="projectsBaseModel.FK_Issue_Component_Id" FromRole="Component" ToRole="Issue" />
+  </EntityType>
+  <EntityType Name="DetailIssue">
+    <Key>
+      <PropertyRef Name="IssueId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="DescriptionWork" />
+      <PropertyRef Name="TimeIn" />
+      <PropertyRef Name="TimeOut" />
+      <PropertyRef Name="NewVersion" />
+    </Key>
+    <Property Name="IssueId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="DescriptionWork" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="TimeIn" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TimeOut" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NewVersion" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Issue" Relationship="projectsBaseModel.FK_DetailIssue_Issue_Id" FromRole="DetailIssue" ToRole="Issue" />
+    <NavigationProperty Name="User" Relationship="projectsBaseModel.FK_DetailIssue_User_Id" FromRole="DetailIssue" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="TypeIssueId" Type="Int32" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="ReporterId" Type="Int32" Nullable="false" />
+    <Property Name="ComponentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Component" Relationship="projectsBaseModel.FK_Issue_Component_Id" FromRole="Issue" ToRole="Component" />
+    <NavigationProperty Name="DetailIssue" Relationship="projectsBaseModel.FK_DetailIssue_Issue_Id" FromRole="Issue" ToRole="DetailIssue" />
+    <NavigationProperty Name="StatusIssue" Relationship="projectsBaseModel.FK_Issue_StatusIssue_Id" FromRole="Issue" ToRole="StatusIssue" />
+    <NavigationProperty Name="TypeIssue" Relationship="projectsBaseModel.FK_Issue_TypeIssue_Id" FromRole="Issue" ToRole="TypeIssue" />
+    <NavigationProperty Name="User" Relationship="projectsBaseModel.FK_Issue_User_Id" FromRole="Issue" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="ProjectLeadId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Component" Relationship="projectsBaseModel.FK_Component_Project_Id" FromRole="Project" ToRole="Component" />
+    <NavigationProperty Name="User" Relationship="projectsBaseModel.FK_Project_User_Id" FromRole="Project" ToRole="User" />
+    <NavigationProperty Name="ProjVersion" Relationship="projectsBaseModel.FK_ProjVersion_Project_Id" FromRole="Project" ToRole="ProjVersion" />
+  </EntityType>
+  <EntityType Name="ProjVersion">
+    <Key>
+      <PropertyRef Name="IdVersion" />
+    </Key>
+    <Property Name="IdVersion" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Version" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="Release" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="projectsBaseModel.FK_ProjVersion_Project_Id" FromRole="ProjVersion" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="StatusIssue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Issue" Relationship="projectsBaseModel.FK_Issue_StatusIssue_Id" FromRole="StatusIssue" ToRole="Issue" />
+  </EntityType>
+  <EntityType Name="TypeIssue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Issue" Relationship="projectsBaseModel.FK_Issue_TypeIssue_Id" FromRole="TypeIssue" ToRole="Issue" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Psw" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Fullname" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Component" Relationship="projectsBaseModel.FK_Component_User_Id" FromRole="User" ToRole="Component" />
+    <NavigationProperty Name="DetailIssue" Relationship="projectsBaseModel.FK_DetailIssue_User_Id" FromRole="User" ToRole="DetailIssue" />
+    <NavigationProperty Name="Issue" Relationship="projectsBaseModel.FK_Issue_User_Id" FromRole="User" ToRole="Issue" />
+    <NavigationProperty Name="Project" Relationship="projectsBaseModel.FK_Project_User_Id" FromRole="User" ToRole="Project" />
+    <NavigationProperty Name="UserRole" Relationship="projectsBaseModel.FK_User_UserRole_Id" FromRole="User" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="projectsBaseModel.FK_User_UserRole_Id" FromRole="UserRole" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Component_Project_Id">
+    <End Role="Project" Type="projectsBaseModel.Project" Multiplicity="1" />
+    <End Role="Component" Type="projectsBaseModel.Component" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Component">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Component_User_Id">
+    <End Role="User" Type="projectsBaseModel.User" Multiplicity="1" />
+    <End Role="Component" Type="projectsBaseModel.Component" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Component">
+        <PropertyRef Name="ComponentLeadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_Component_Id">
+    <End Role="Component" Type="projectsBaseModel.Component" Multiplicity="1" />
+    <End Role="Issue" Type="projectsBaseModel.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Component">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailIssue_Issue_Id">
+    <End Role="Issue" Type="projectsBaseModel.Issue" Multiplicity="1" />
+    <End Role="DetailIssue" Type="projectsBaseModel.DetailIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailIssue">
+        <PropertyRef Name="IssueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailIssue_User_Id">
+    <End Role="User" Type="projectsBaseModel.User" Multiplicity="1" />
+    <End Role="DetailIssue" Type="projectsBaseModel.DetailIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailIssue">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_StatusIssue_Id">
+    <End Role="StatusIssue" Type="projectsBaseModel.StatusIssue" Multiplicity="1" />
+    <End Role="Issue" Type="projectsBaseModel.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusIssue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_TypeIssue_Id">
+    <End Role="TypeIssue" Type="projectsBaseModel.TypeIssue" Multiplicity="1" />
+    <End Role="Issue" Type="projectsBaseModel.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeIssue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="TypeIssueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_User_Id">
+    <End Role="User" Type="projectsBaseModel.User" Multiplicity="1" />
+    <End Role="Issue" Type="projectsBaseModel.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="ReporterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_User_Id">
+    <End Role="User" Type="projectsBaseModel.User" Multiplicity="1" />
+    <End Role="Project" Type="projectsBaseModel.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ProjectLeadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjVersion_Project_Id">
+    <End Role="Project" Type="projectsBaseModel.Project" Multiplicity="1" />
+    <End Role="ProjVersion" Type="projectsBaseModel.ProjVersion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjVersion">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserRole_Id">
+    <End Role="UserRole" Type="projectsBaseModel.UserRole" Multiplicity="1" />
+    <End Role="User" Type="projectsBaseModel.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
